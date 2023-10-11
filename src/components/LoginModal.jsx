@@ -1,19 +1,16 @@
-import React from 'react'
-import { useDispatch } from 'react-redux';
-import style from './Modal.module.css'
-import { openModal } from '../features/modal/modalSlice'
+import React from "react";
+import { useDispatch } from "react-redux";
+import style from "./Modal.module.css";
+import { openLogin } from "../features/modal/modalSlice";
 
-const LoginModal = ({
-	open
-}) => {
-
-	if (!open) return null
+const LoginModal = ({ open }) => {
+	if (!open) return null;
 
 	const dispatch = useDispatch();
 
 	function clickLogin(e) {
-		e.preventDefault()
-		dispatch(openModal({name:'login',open:false}))
+		e.preventDefault();
+		dispatch(openLogin({ open: false }));
 	}
 
 	return (
@@ -21,14 +18,16 @@ const LoginModal = ({
 			<div className={style.form}>
 				<p>Login</p>
 				<form onSubmit={clickLogin}>
-					<input type="text" placeholder="username"/>
-					<input type="password" placeholder="password"/>
+					<input type="text" placeholder="username" />
+					<input type="password" placeholder="password" />
 					<button type="submit">login</button>
-					<p className={style.message}>Not registered? <a href="#">Create an account</a></p>
+					<p className={style.message}>
+						Not registered? <a href="#">Create an account</a>
+					</p>
 				</form>
 			</div>
 		</div>
-	)
-}
+	);
+};
 
-export default LoginModal
+export default LoginModal;
